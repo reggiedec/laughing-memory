@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Big Birthday Bash: Neighborhood Placement</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1 class="animated-heading">The Big Birthday Bash!</h1>
+      <p>Pick a friend, then place them on the map. After placing, choose their look and items, then move on to the next friend.</p>
+    </header>
+
+    <section id="controls" class="controls">
+      <div class="control-group action-buttons">
+        <button id="copyBtn" type="button">Copy JSON</button>
+        <button id="downloadBtn" type="button">Download JSON</button>
+        <button id="resetBtn" class="btn-danger" type="button">Reset Game</button>
+      </div>
+    </section>
+
+    <section id="friendsSection">
+      <div class="section-header">
+        <h2>Friends</h2>
+        <p>Click a friend to select them. Then click on the map to place or move them.</p>
+      </div>
+      <div id="friendsTray" class="friends-tray"></div>
+    </section>
+
+    <section id="mapSection">
+      <div class="section-header">
+        <h2>Neighborhood Map</h2>
+        <p>Place friends anywhere on the map.</p>
+      </div>
+      <div id="map" class="map" aria-label="Neighborhood map">
+      </div>
+    </section>
+
+    <section id="customizeSection">
+      <div class="section-header">
+        <h2 style="display:none;">Choices</h2>
+      </div>
+      <div class="option-group">
+        <div class="option-title">Hair</div>
+        <div id="hairOptions" class="option-tray"></div>
+      </div>
+      <div class="option-group">
+        <div class="option-title">Gifts</div>
+        <div id="giftOptions" class="option-tray"></div>
+      </div>
+      <div class="option-group">
+        <div class="option-title">Food</div>
+        <div id="foodOptions" class="option-tray"></div>
+      </div>
+      <div class="option-group">
+        <div class="option-title">Costume</div>
+        <div id="clothesOptions" class="option-tray"></div>
+      </div>
+    </section>
+
+    <div class="bottom-actions">
+      <button id="nextFriendBtn" class="btn-secondary" type="button">Done with this friend → Next</button>
+    </div>
+  </div>
+
+  <div id="partyModal" class="modal hidden">
+    <div class="modal-backdrop"></div>
+    <div class="modal-card">
+      <div class="modal-body">
+        <img class="party-gif" src="200.gif" alt="Party confetti">
+        <div class="modal-text">
+          <h2>Time for your birthday party!</h2>
+          <p>The friends you chose are all lined up and ready!</p>
+        </div>
+      </div>
+      <div id="partyLineup" class="party-lineup"></div>
+      <div class="modal-actions">
+        <button id="closePartyBtn" type="button">Start the party</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

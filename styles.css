@@ -1,0 +1,536 @@
+* {
+  box-sizing: border-box;
+  font-family: "Dosis", "Manrope", "SF Pro Display", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+:root {
+  --malachite: #04e762;
+  --amber-flame: #f5b700;
+  --brilliant-rose: #f62dae;
+  --blue-bell: #00a1e4;
+  --lime-flash: #89fc00;
+  --malachite-ff: #04e762ff;
+  --amber-flame-ff: #f5b700ff;
+  --brilliant-rose-ff: #f62daeff;
+  --blue-bell-ff: #00a1e4ff;
+  --lime-flash-ff: #89fc00ff;
+  --gradient-palette: linear-gradient(
+    135deg,
+    var(--malachite-ff),
+    var(--amber-flame-ff),
+    var(--brilliant-rose-ff),
+    var(--blue-bell-ff),
+    var(--lime-flash-ff)
+  );
+  --ink: #0f172a;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  background: linear-gradient(135deg, #f4f7ff 0%, #eef2ff 40%, #f9fbff 100%);
+  color: var(--ink);
+}
+
+#app {
+  max-width: 1120px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 22px 24px 30px;
+  box-shadow: 0 14px 40px rgba(15, 23, 42, 0.12);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+}
+
+h1 {
+  margin: 0 0 8px 0;
+  font-size: 24px;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  margin: 0;
+  font-size: 17px;
+  letter-spacing: -0.01em;
+}
+
+p {
+  margin: 4px 0 0 0;
+  color: #475569;
+}
+
+.muted {
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.section-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin: 14px 0 18px 0;
+  flex-wrap: wrap;
+}
+
+.control-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+label {
+  font-weight: 600;
+}
+
+select {
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 1px solid #cbd5e1;
+  background: #f8fafc;
+  font-size: 14px;
+}
+
+button {
+  padding: 11px 15px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  background: var(--gradient-palette);
+  background-size: 200% 200%;
+  background-position: 0% 50%;
+  color: #0f172a;
+  cursor: pointer;
+  font-size: 14px;
+  transition: transform 120ms ease, box-shadow 140ms ease, background 140ms ease, color 140ms ease;
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.14);
+  letter-spacing: -0.01em;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 26px rgba(15, 23, 42, 0.2);
+}
+
+button:focus-visible {
+  outline: 2px solid var(--blue-bell);
+  outline-offset: 2px;
+}
+
+button:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.2);
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, var(--amber-flame-ff), var(--lime-flash-ff));
+  color: #2b1b00;
+  border-color: rgba(245, 183, 0, 0.6);
+  box-shadow: 0 10px 22px rgba(245, 183, 0, 0.18);
+  min-height: 46px;
+  min-width: 210px;
+  text-align: center;
+}
+
+.btn-secondary:hover {
+  box-shadow: 0 12px 26px rgba(245, 183, 0, 0.22);
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #ff7b7b, var(--brilliant-rose-ff));
+  color: #4a0f21;
+  border-color: rgba(246, 45, 174, 0.5);
+  box-shadow: 0 10px 22px rgba(246, 45, 174, 0.18);
+}
+
+.action-buttons {
+  display: inline-flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+#statusMessage {
+  flex-basis: 100%;
+  min-height: 18px;
+  font-weight: 600;
+}
+
+section {
+  margin-top: 16px;
+  background: #fdfefe;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  border-radius: 14px;
+  padding: 12px 12px 14px;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.05);
+}
+
+/* FRIENDS TRAY */
+
+.friends-tray {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.friend-card {
+  width: 104px;
+  padding: 8px 8px 10px;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #f8fafc, #eef2ff);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: border-color 120ms ease, box-shadow 120ms ease, transform 120ms ease;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.06);
+}
+
+.friend-card:hover {
+  transform: translateY(-1px);
+}
+
+.friend-card.selected {
+  border-color: var(--brilliant-rose);
+  box-shadow: 0 0 0 2px rgba(246, 45, 174, 0.28);
+}
+
+.friend-label {
+  font-size: 12px;
+  margin-top: 4px;
+  color: #0f172a;
+}
+
+.friend-status {
+  font-size: 11px;
+  color: #6b7280;
+}
+
+/* SPRITES */
+
+.friend-sprite {
+  width: 70px;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+/* MAP AREA */
+
+#mapSection {
+  margin-top: 22px;
+}
+
+.map {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  aspect-ratio: 923 / 700; /* give it a bit more horizontal breathing room */
+  margin-top: 10px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 3px solid rgba(0, 161, 228, 0.18);
+  background-repeat: no-repeat, no-repeat;
+  background-position: left center, right center;
+  background-size: 50% 100%, 50% 100%;
+  background-color: #dfe7ff;
+}
+
+.map::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0.04) 75%);
+}
+
+/* Friend on map */
+
+.map-friend {
+  position: absolute;
+  transform: translate(-50%, -100%);
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+}
+
+.map-friend:focus-visible {
+  outline: 2px solid #4b6bff;
+  outline-offset: 2px;
+}
+
+.map-friend .friend-sprite {
+  pointer-events: none;
+  position: relative;
+  z-index: 1;
+  margin-top: 12px; /* leave room for hat */
+}
+
+.map-friend.active .friend-sprite {
+  box-shadow: 0 0 0 4px rgba(0, 161, 228, 0.35);
+  border-radius: 10px;
+}
+
+.party-hat {
+  width: 34px;
+  height: 34px;
+  margin-bottom: -8px;
+  background: repeating-linear-gradient(135deg, var(--brilliant-rose) 0 8px, var(--brilliant-rose) 8px 12px, var(--blue-bell) 12px 16px, var(--lime-flash) 16px 20px);
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+  border: 2px solid #201010;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translate(-50%, -10%) rotate(-4deg);
+  z-index: 2;
+}
+
+.party-hat::before {
+  content: "";
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(circle at 50% 50%, #ffd54f 40%, #fbc02d 70%, #e1a500 90%);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.map-friend.just-placed {
+  animation: pop-in 320ms ease;
+}
+
+@keyframes pop-in {
+  0% {
+    transform: translate(-50%, -100%) scale(0.6);
+  }
+  70% {
+    transform: translate(-50%, -100%) scale(1.08);
+  }
+  100% {
+    transform: translate(-50%, -100%) scale(1);
+  }
+}
+
+/* OPTION PICKERS */
+
+.option-group {
+  margin-top: 16px;
+}
+
+.option-title {
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.option-tray {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.option-pill {
+  border: 2px solid transparent;
+  border-radius: 12px;
+  padding: 12px 14px;
+  background: #f4f4ff;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: border-color 120ms ease, box-shadow 120ms ease, transform 120ms ease;
+  will-change: transform;
+}
+
+.option-pill:hover {
+  transform: translateY(-1px);
+}
+
+.option-pill.selected {
+  border-color: var(--amber-flame);
+  box-shadow: 0 0 0 2px rgba(245, 183, 0, 0.32);
+}
+
+.option-pill.disabled {
+  opacity: 0.35;
+  pointer-events: none;
+  filter: grayscale(0.6);
+}
+
+.option-pill img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.option-pill .label {
+  display: none;
+}
+
+.map-label {
+  position: absolute;
+  top: 10px;
+  padding: 8px 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #0f172a;
+  font-weight: 700;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+.map-label-left {
+  left: 10px;
+}
+
+.map-label-right {
+  right: 10px;
+}
+
+.map-label-center {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.badge-strip {
+  display: flex;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.badge-strip img {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+  background: #fff;
+}
+
+.bottom-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(2px);
+}
+
+.modal-card {
+  position: relative;
+  background: #fff;
+  border-radius: 16px;
+  padding: 18px 18px 14px;
+  max-width: 720px;
+  width: calc(100% - 32px);
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.28);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  z-index: 1;
+}
+
+.modal-body {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.party-gif {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 12px;
+  background: #f8fafc;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.modal-text h2 {
+  margin: 0 0 4px 0;
+  letter-spacing: -0.02em;
+}
+
+.modal-text p {
+  margin: 0;
+  color: #475569;
+}
+
+.party-lineup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 12px 0 8px;
+}
+
+.party-lineup .lineup-item {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px;
+  border-radius: 12px;
+  background: #f8fafc;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+}
+
+.party-lineup .friend-sprite {
+  width: 60px;
+  height: auto;
+  filter: drop-shadow(0 3px 6px rgba(0,0,0,0.18));
+}
+
+.party-lineup .party-hat {
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform: translate(-50%, -30%) rotate(-6deg);
+  margin: 0;
+  z-index: 2;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal-actions button {
+  min-width: 140px;
+}
+
+@media (max-width: 640px) {
+  #app {
+    padding: 16px;
+  }
+
+  .map {
+    height: 420px;
+  }
+}
